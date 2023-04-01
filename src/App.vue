@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <h2>Register form</h2>
   <Register msg="Welcome to Your Vue.js App"/>
 </template>
 
