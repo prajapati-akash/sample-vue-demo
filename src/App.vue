@@ -1,6 +1,6 @@
 <template>
   <h2>Register form</h2>
-  <Register msg="Welcome to Your Vue.js App"/>
+  <Register/>
 </template>
 
 <script>

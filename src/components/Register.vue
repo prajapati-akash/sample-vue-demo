@@ -1,34 +1,33 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col align-self-center col-3">
+      <div class="col align-self-center">
         <form @submit.prevent="onSubmit">
             <div class="row">
-                <div class="col-3 col-md-6 col-sm-9">
-                  <p>user name</p>
-                  <input type="text"  name="user_name" v-model="user_name"/>
-                  <!-- <div v-if="v$.name.$error">Name field has an error.</div> -->
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="first_name" class="form-label" placeholder="name">user name</label>
+                  <input type="text"  name="first_name" v-model="first_name" class="form-control"/>
+                  <span v-if="v$.first_name.$error"> {{ v$.first_name.$errors[0].$message }}</span>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-3 col-md-6 col-sm-9">
-                  <p>email</p>
-                  <input type="text"  name="email" v-model="email"/>
-                  <!-- <div v-if="v$.name.$error">Name field has an error.</div> -->
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="email" class="form-label">email</label>
+                  <input type="text"  name="email" v-model="email" class="form-control"/>
+                  <span v-if="v$.email.$error"> {{ v$.email.$errors[0].$message }}</span>
                 </div>
             </div>
             
             <div class="row">
-                <div class="col-3 col-md-6 col-sm-9">
-                  <p>password</p>
-                  <input type="password"  name="password" v-model="password"/>
-                  <!-- <div v-if="v$.name.$error">Name field has an error.</div> -->
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="password" class="form-label">password</label>
+                  <input type="password"  name="password" v-model="password" class="form-control"/>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-3 col-md-6 col-sm-9 pt-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pt-3">
                   <div class="d-flex flex-row bd-highlight mb-3">
                     <div class="p-2 bd-highlight">
                       <button class="btn btn-primary">Submit</button>
@@ -38,12 +37,7 @@
                     </div>
                   </div> 
                 </div>
-            </div>
-
-            
-           
-
-           
+            </div>           
           </form>
         </div>
     </div>
@@ -51,31 +45,33 @@
 </template>
 
 <script>
-import { useVuelidate } from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
+import useValidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators';
 
 export default {
-  name: 'Register',
-  props: {
-    
-  },
-  components : {
-    useVuelidate,
-    required,
-    email
-  },
   data() {
     return {
-      v$: useVuelidate(),
-      user_name : "",
-      email : "",
-      password : ""
+      v$: useValidate(),
+      first_name:'',
+      email:'',
+      password:'',
+    }
+  },
+  validation(){
+    return {
+      first_name:{required},
+      email:{required},
+      password:{required},
     }
   },
   methods: {
-    onSubmit(values) {
-      console.log('console a submit button');
-      console.log(values.type);
+    onSubmit() {
+      this.v$.$validate();
+      if(!this.v$.$error) {
+        console.log('submit form');
+      } else {
+        console.log('form not submitted');
+      }
     }
   }
 }
