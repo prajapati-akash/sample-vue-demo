@@ -6,10 +6,18 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                   <label for="first_name" class="form-label" placeholder="name">user name</label>
-                  <input type="text"  name="first_name" v-model="v$.first_name.$model" class="form-control"/>
-                  <div class="tex-danger" v-for="(error, index) of v$.first_name.$errors" :key="index">
+                  <input 
+                  type="text"
+                  name="first_name"
+                  v-model="v$.first_name.$model"
+                  class="form-control"
+                  @blur="v$.first_name.$touch"
+                  />
+                  <div class="text-danger" v-for="(error, index) of v$.first_name.$errors" :key="index">
                     <div class="error-msg">{{ error.$message }}</div>
                   </div>
+                  <span v-if="$v.first_name.$error">Name field has an error</span>
+
                 </div>
             </div>
 
@@ -17,7 +25,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                   <label for="email" class="form-label">email</label>
                   <input type="text"  name="email" v-model="v$.email.$model" class="form-control"/>
-                  <div class="tex-danger" v-for="(error, index) of v$.email.$errors" :key="index">
+                  <div class="text-danger" v-for="(error, index) of v$.email.$errors" :key="index">
                     <div class="error-msg">{{ error.$message }}</div>
                   </div>
                 </div>
@@ -67,9 +75,9 @@ export default {
   },
   data() {
     return {
-      first_name : "",
-      email : "",
-      password : ""
+      first_name: "",
+      email: "",
+      password: ""
     }
   },
   methods: {
