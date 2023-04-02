@@ -24,6 +24,7 @@ export default {
   methods: {
     onSubmit(values) {
       console.log(JSON.stringify(values, null, 2));
+      console.log('email');
     },
     validateEmail(value) {
       // if the field is empty
@@ -39,5 +40,45 @@ export default {
       return true;
     },
   },
+  beforeCreate() {
+    alert("beforeCreate");
+
+  },
+  created() {
+    alert("created");
+
+  },
+  mounted() {
+    alert("mounted");
+
+  },
+  beforeMount() {
+    alert("beforeMount");
+
+  },
+  beforeUpdate() {
+    alert("beforeUpdate");
+
+  },
+  updated() {
+    alert("updated");
+
+  },
+  beforeUnmount() {
+    alert("beforeUnmount");
+    
+  },
+  unmounted() {
+    alert("unmounted");
+    
+  },
+  activated() {
+    alert("activated");
+    
+  },
+  deactivated() {
+    alert("deactivated");
+    
+  }
 };
 </script>
