@@ -1,93 +1,43 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col align-self-center">
-        <form @submit.prevent="onSubmit">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <label for="first_name" class="form-label" placeholder="name">user name</label>
-                  <input type="text"  name="first_name" v-model="v$.first_name.$model" class="form-control"/>
-                  <div class="tex-danger" v-for="(error, index) of v$.first_name.$errors" :key="index">
-                    <div class="error-msg">{{ error.$message }}</div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <label for="email" class="form-label">email</label>
-                  <input type="text"  name="email" v-model="v$.email.$model" class="form-control"/>
-                  <div class="tex-danger" v-for="(error, index) of v$.email.$errors" :key="index">
-                    <div class="error-msg">{{ error.$message }}</div>
-                  </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                  <label for="password" class="form-label">password</label>
-                  <input type="password"  name="password" v-model="password" class="form-control"/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pt-3">
-                  <div class="d-flex flex-row bd-highlight mb-3">
-                    <div class="p-2 bd-highlight">
-                      <button class="btn btn-primary">Submit</button>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                      <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
-                  </div> 
-                </div>
-            </div>           
-          </form>
-        </div>
-    </div>
+  <div id="app">
+    <Form @submit="onSubmit">
+      <Field name="email" v-model="email" type="email" :rules="validateEmail" />
+      <ErrorMessage name="email" class="text-danger" />
+      <br>
+      <button>Sign up</button>
+    </Form>
   </div>
 </template>
-
 <script>
-import { useVuelidate } from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
-
+import { Form, Field,ErrorMessage  } from 'vee-validate';
 export default {
-  name: 'Register',
-  props: {
-    
-  },
-  components : {
-    useVuelidate,
-    required,
-    email
-  },
-  setup () {
-    return { v$: useVuelidate() }
+  components: {
+    Form,
+    Field,
+    ErrorMessage 
   },
   data() {
     return {
-      first_name : "",
       email : "",
-      password : ""
     }
   },
   methods: {
-    onSubmit() {
-      console.log('console a submit button');
-      
-      console.log(typeof this.v$.$validate());
-    }
-  },
-  validations () {
-    return {
-      first_name: { 
-        required
-      },
-      email: { 
-        required
+    onSubmit(values) {
+      console.log(JSON.stringify(values, null, 2));
+    },
+    validateEmail(value) {
+      // if the field is empty
+      if (!value) {
+        return 'This field is required';
       }
-    }
-  }
-}
+      // if the field is not a valid email
+      const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      if (!regex.test(value)) {
+        return 'This field must be a valid email';
+      }
+      // All is good
+      return true;
+    },
+  },
+};
 </script>

@@ -14,6 +14,7 @@
     "core-js": "^3.8.3",
     "vee-validate": "^4.8.4",
     "vue": "^3.2.13",
+    "vue-router": "^4.1.6",
     "yup": "^1.0.2"
   },
   "devDependencies": {
@@ -40,7 +41,7 @@
     "rules": {
       "vue/multi-word-component-names": "off",
       "vue/no-unused-components": "off",
-      "vue/no-unused-vars" : "off"
+      "vue/no-unused-vars": "off"
     }
   },
   "browserslist": [
