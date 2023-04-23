@@ -105,7 +105,7 @@ function submitForm(value) {
   var reader = new FileReader();
   reader.onload = (e) => {
     initialData.profile_picture.value = e.target.result;
-    studentFormData.profile_picture = { value: e.target.result}
+    // studentFormData.profile_picture = { value: e.target.result}
   }
   reader.readAsDataURL(initialData.profile_picture);
 
