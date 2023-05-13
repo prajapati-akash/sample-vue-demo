@@ -85,7 +85,7 @@ const initialData = {
   email : "",
   college_name: "",
   gender:"",
-  profile_picture : "",
+  profile_picture : {},
   education_details : [
       {
         standard: "",
@@ -98,14 +98,14 @@ const initialData = {
   ,
 }
 
-function submitForm(value) {
+function submitForm(values) {
   console.log("add student submitted successfully");
-  var studentFormData =JSON.parse(JSON.stringify(value));
+  var studentFormData =JSON.parse(JSON.stringify(values));
 
   var reader = new FileReader();
   reader.onload = (e) => {
     initialData.profile_picture.value = e.target.result;
-    // studentFormData.profile_picture = { value: e.target.result}
+    studentFormData.profile_picture = { value: e.target.result}
   }
   reader.readAsDataURL(initialData.profile_picture);
 

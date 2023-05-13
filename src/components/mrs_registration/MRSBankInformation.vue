@@ -1000,12 +1000,11 @@
 <script>
 import { initFlowbite } from 'flowbite'
 import { Field, Form, ErrorMessage} from 'vee-validate';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
 import { useMasterRecord } from '../../api/MasterRecord.js'
 import axios from 'axios';
 import RequiredAstrik from '../RequiredAstrik.vue';
 import TableHeader from '../TableHeader'
+import useToasterNotify from '@/js/comman-function.js'
 
 const VUE_APP_BASE_API = process.env.VUE_APP_BASE_API;
 
@@ -1070,7 +1069,8 @@ export default{
             var account_number = (values.account_number !== undefined) ? values.account_number : "";
             var value_exists = this.searchObjectValue(account_number, this.formDataList);
             if(value_exists.id != "no_data") {
-                alert("Account number already existed!")
+                // alert("Account number already existed!")
+                useToasterNotify('error', "Account number already existed!.")
             }else {
                 this.formDataList.push({
                     bank_name : (values.bank_name !== undefined) ? values.bank_name.trim() : "",
@@ -1090,6 +1090,8 @@ export default{
                     post_code : (values.post_code !== undefined) ? values.post_code.trim() : "",
 
                 })
+
+                 useToasterNotify('success', "Bank information details added successfully.")
 
                 this.toggleModel("AddToggleModel");
                 this.$emit("completeBankInformation", this.formDataList)
@@ -1121,7 +1123,8 @@ export default{
                 this.toggleModel("editToggleModel")
             }
             else {
-                alert("please select a valid bank information");
+                // alert("please select a valid bank information");
+                useToasterNotify('error', "Please select a valid bank information.")
             }
         },
         updateForm(values) {
@@ -1151,14 +1154,17 @@ export default{
 
                     this.toggleModel("editToggleModel")
                     this.$emit("completeBankInformation", this.formDataList)
-                    alert("Bank information updated successfully")
+                    // alert("Bank information updated successfully")
+                    useToasterNotify('success', "Bank information updated successfully.")
                 } else {
-                    alert("Account number already existed!")
+                    // alert("Account number already existed!")
+                    useToasterNotify('error', "Account number already existed!.")
                 }
 
             }
             else {
-                alert("You have updated form in not found in list");
+                // alert("You have updated form in not found in list");
+                useToasterNotify('error', "You have updated form in not found in list.")
             }
         },
         validateSelectRequiredField(value) {
@@ -1178,9 +1184,11 @@ export default{
                 if(this.formDataList && this.formDataList.length > 0) {
                     this.formDataList.splice(index, 1);
                     this.$emit("completeBankInformation", this.formDataList)
-                    alert("Select contact detail deleted successfully.");
+                    // alert("Select contact detail deleted successfully.");
+                    useToasterNotify('success', "Select contact detail deleted successfully.")
                 } else {
-                    alert("Select contact detail not found in list.");
+                    // alert("Select contact detail not found in list.");
+                    useToasterNotify('error', "Select contact detail not found in list.")
                 }
             }
         },
@@ -1192,10 +1200,10 @@ export default{
             }
             return { id :'no_data'}
         },
-        loadRegionAPIResponse(method_name, append_paramter, bind_params) {
+        async loadRegionAPIResponse(method_name, append_paramter, bind_params) {
             var url = null;
             url = `${VUE_APP_BASE_API}method=${method_name}&${append_paramter}`
-            axios.get(url)
+            await axios.get(url)
                 .then((res) => {
                     if(res.data.settings.success == "1") {
                         this[bind_params] = res.data.data;

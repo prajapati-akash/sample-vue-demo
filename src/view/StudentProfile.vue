@@ -9,7 +9,7 @@ import StudenForm from '@/components/StudenForm.vue';
 
 export default {
     components : {
-        StudenForm
+        StudenForm,
     }
 }
 </script>

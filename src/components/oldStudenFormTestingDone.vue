@@ -115,8 +115,8 @@
   <script>
   import StudentEducation from './StudentEducation.vue';
   import { Field, Form, ErrorMessage} from 'vee-validate';
-  import { toast } from 'vue3-toastify';
   import axios from 'axios';
+  import { toast } from 'vue3-toastify';
   import 'vue3-toastify/dist/index.css';
   import * as Yup from 'yup';
   

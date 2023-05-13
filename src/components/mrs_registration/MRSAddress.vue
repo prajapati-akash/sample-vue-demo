@@ -733,11 +733,10 @@
 <script>
 import { initFlowbite } from 'flowbite'
 import { Field, Form, ErrorMessage } from 'vee-validate';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
 import axios from 'axios';
 import RequiredAstrik from '../RequiredAstrik.vue';
 import TableHeader from '../TableHeader.vue'
+import useToasterNotify from '@/js/comman-function.js'
 
 const VUE_APP_BASE_API = process.env.VUE_APP_BASE_API;
 
@@ -797,6 +796,8 @@ export default{
                 location_name : values.location_name.trim(),
                 location_type : values.location_type.trim(),
             })
+
+            useToasterNotify('success', "Corresponding address details add successfully.")
             this.openAddressModel("addMrsAddressModal");
             this.$emit("completeAddress", this.addressList)
             this.$refs.addressRefForm.resetForm();
@@ -826,7 +827,8 @@ export default{
                 this.openAddressModel("editMrsAddressModal")
             }
             else {
-                alert("please select a valid contact detail");
+                // alert("please select a valid contact detail");
+                useToasterNotify('error', "please select a valid contact detail")
             }
         },
         updateAddressForm(values) {
@@ -847,10 +849,12 @@ export default{
                 };
                 this.openAddressModel("editMrsAddressModal")
                 this.$emit("completeAddress", this.addressList)
-                alert("Select contact detail updated successfully")
+                // alert("Select contact detail updated successfully")
+                useToasterNotify('success', "Contact detail updated successfully")
             }
             else {
-                alert("You have updated form in not found in list");
+                // alert("You have updated form in not found in list");
+                useToasterNotify('error', "You have updated form in not found in list")
             }
         },
         DeleteAddressFormList(index) {
@@ -858,9 +862,11 @@ export default{
                 if(this.addressList && this.addressList.length > 0) {
                     this.addressList.splice(index, 1);
                     this.$emit("completeAddress", this.addressList)
-                    alert("Select contact detail deleted successfully.");
+                    // alert("Select contact detail deleted successfully.");
+                    useToasterNotify('success', "Select contact detail deleted successfully.")
                 } else {
-                    alert("Select contact detail not found in list.");
+                    // alert("Select contact detail not found in list.");
+                    useToasterNotify('error', "Select contact detail not found in list.")
                 }
             }
         },

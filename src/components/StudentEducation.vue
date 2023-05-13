@@ -35,29 +35,29 @@ const removeEducationDetails = (remove, value) =>{
     <div class="border-b border-gray-900/10 pb-12">
 
       <!-- heading of education details -->
-      <div class="flex flex-row pb-3 mr-16">
-        <div class="flex-initial w-48  pl-3">
+      <div class="lg:flex flex-row pb-3 mr-16">
+        <div class="lg:flex-initial lg:w-48  lg:pl-3">
           <p class="font-semibold text-center">Standard</p>
         </div>
-        <div class="flex-initial w-24 pl-3">
+        <div class="lg:flex-initial lg:w-24 lg:pl-3">
           <p class="font-semibold text-center">Board</p>
         </div>
-        <div class="flex-initial w-80 pl-3">
+        <div class="lg:flex-initial lg:w-80 lg:pl-3">
           <p class="font-semibold text-center">University name</p>
         </div>
-        <div class="flex-initial w-28 pl-3">
+        <div class="lg:flex-initial lg:w-28 lg:pl-3">
           <p class="font-semibold text-center">Percentage (%)</p>
         </div>
-        <div class="flex-initial w-28 pl-3">
+        <div class="lg:flex-initial lg:w-28 lg:pl-3">
           <p class="font-semibold text-center">Passing year</p>
         </div>
-        <div class="flex-initial w-25">
+        <div class="lg:flex-initial lg:w-25">
         </div>
       </div>
 
         <FieldArray name="education_details" v-slot="{ fields, push, remove}">
           <!-- hello, {{ fields }} -->
-          <div class="flex items-center justify-end gap-x-6">
+          <div class="lg:flex lg:items-center lg:justify-end lg:gap-x-6">
               <button type="button" @click="addNewField(push)" class=" text-green-600 hover:text-green-400">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-8 h-8">
@@ -71,11 +71,11 @@ const removeEducationDetails = (remove, value) =>{
           v-for="(field, idx) in fields"
           :key="field.key"
         >
-          <div class="flex pb-3">
-              <p class="font-semibold text-center pl-5 pt-1">{{ idx + 1 }}.</p>
+          <div class="lg:flex pb-3">
+              <p class="font-semibold lg:text-center pl-5 pt-1">{{ idx + 1 }}.</p>
 
               <!-- Standard -->
-              <div class="flex-initial w-36 pl-3">
+              <div class="lg:flex-initial lg:w-36 lg:pl-3">
                 <Field type="text" :name="`education_details[${idx}].standard`" :id="`standard__${idx}`" autocomplete="given-name"
                   placeholder="Ex: 10th"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -83,7 +83,7 @@ const removeEducationDetails = (remove, value) =>{
               </div>
 
               <!-- Board input -->
-              <div class="flex-initial w-32 pl-3">
+              <div class="lg:flex-initial lg:w-32 lg:pl-3">
                 <Field type="text" :name="`education_details[${idx}].board`" :id="`board__${idx}`" autocomplete="given-name"
                   placeholder="Ex: Board name"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -91,7 +91,7 @@ const removeEducationDetails = (remove, value) =>{
               </div>
 
               <!-- Univercity name input -->
-              <div class="flex-initial w-80 pl-3">
+              <div class="lg:flex-initial lg:w-80 lg:pl-3">
                 <Field type="text" :name="`education_details[${idx}].university_name`" :id="`university_name_${idx}`" autocomplete="given-name"
                   placeholder="Ex: University name"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -99,7 +99,7 @@ const removeEducationDetails = (remove, value) =>{
               </div>
 
               <!-- Percentage input -->
-              <div class="flex-initial w-24 pl-3">
+              <div class="lg:flex-initial lg:w-24 lg:pl-3">
                 <Field type="number" :name="`education_details[${idx}].percentage`" :id="`percentage_${idx}`" autocomplete="given-name"
                   placeholder="Ex: 100"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -107,14 +107,14 @@ const removeEducationDetails = (remove, value) =>{
               </div>
 
               <!-- Passing year input -->
-              <div class="flex-initial w-32 pl-3">
+              <div class="lg:flex-initial lg:w-32 lg:pl-3">
                 <Field type="text" :name="`education_details[${idx}].pass_year`" :id="`pass_year_${idx}`" autocomplete="given-name"
                   placeholder="Ex: 2023"
                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                   <ErrorMessage :name="`education_details[${idx}].pass_year`" class="text-red-500" />
               </div>
 
-              <div class="flex-initial w-50 pl-3 pt-1" v-if="idx > 0">
+              <div class="lg:flex-initial lg:w-50 lg:pl-3 pt-1" v-if="idx > 0">
                 <button type="button" @click="removeEducationDetails(remove, idx)" class="text-red-600 hover:text-red-400">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">

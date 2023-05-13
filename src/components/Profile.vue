@@ -120,11 +120,10 @@
 </template>
 
 <script>
-import Contact from './Contact.vue';
-import Address from './Address.vue';
+import Contact from '@/components/Contact.vue';
+import Address from '@/components/Address.vue';
 import { Field, Form, ErrorMessage} from 'vee-validate';
 import axios from 'axios'
-import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 

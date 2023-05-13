@@ -174,7 +174,7 @@
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
                                         <label for="tax_description" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Description:
+                                            Description :
                                         </label>
                                         <div class="mt-2">
                                             <Field
@@ -372,9 +372,8 @@
 <script>
 import { initFlowbite } from 'flowbite'
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
-import { toast } from 'vue3-toastify';
 import TableHeader from '../TableHeader.vue'
-import 'vue3-toastify/dist/index.css';
+import useToasterNotify from '@/js/comman-function.js'
 
 import axios from 'axios';
 import RequiredAstrik from '../RequiredAstrik.vue';
@@ -425,12 +424,13 @@ export default{
                 tax_name : values.tax_name.trim(),
                 tax_number : values.tax_number.trim(),
                 tax_type : values.tax_type.trim(),
-                tax_description : values.tax_description.trim(),
+                tax_description : (values.tax_description != undefined) ? values.tax_description.trim() : "",
 
             })
             this.toggleModel("AddToggleModel");
             this.$emit("completeTaxInformation", this.taxInformation)
             this.$refs.addressRefForm.resetForm();
+            useToasterNotify('success', "tax informationss details add successfully.")
         },
         onEditForm(id) {
             if(typeof this.taxInformation[id] != 'undefined') {
@@ -457,15 +457,17 @@ export default{
                     tax_name : values.tax_name.trim(),
                     tax_number : values.tax_number.trim(),
                     tax_type : values.tax_type.trim(),
-                    tax_description : values.tax_description.trim(),
+                    tax_description : (values.tax_description != undefined) ? values.tax_description.trim() : "",
 
                 };
                 this.toggleModel("editToggleModel")
                 this.$emit("completeTaxInformation", this.taxInformation)
-                alert("Select tax information detail updated successfully")
+                // alert("Select tax information detail updated successfully")
+                useToasterNotify('success', "Select tax information detail updated successfully.")
             }
             else {
-                alert("You have updated form in not found in list");
+                // alert("You have updated form in not found in list");
+                useToasterNotify('error', "You have updated form in not found in list.")
             }
         },
         validateSelectRequiredField(value) {
@@ -485,24 +487,13 @@ export default{
                 if(this.taxInformation && this.taxInformation.length > 0) {
                     this.taxInformation.splice(index, 1);
                     this.$emit("completeTaxInformation", this.taxInformation)
-                    alert("Select contact detail deleted successfully.");
+                    // alert("Select contact detail deleted successfully.");
+                    useToasterNotify('success', "Select contact detail deleted successfully.")
                 } else {
-                    alert("Select contact detail not found in list.");
+                    // alert("Select contact detail not found in list.");
+                    useToasterNotify('error', "Select contact detail not found in list.")
                 }
             }
-        },
-        searchJSON(obj, key) {
-            this.editObject = [];
-            for (let k in obj) {
-                if (obj.hasOwnProperty(k)) {
-                if (k === key && obj[k] === val) {
-                    this.editObject.push(obj);
-                } else if (typeof obj[k] === "object") {
-                    this.editObject = this.editObject.concat(searchJSON(obj[k], key, val));
-                }
-                }
-            }
-            return this.editObject;
         },
         toggleModel(toggleModal){
             console.log('open model');

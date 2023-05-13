@@ -3,13 +3,13 @@
 
     <div class="flex justify-end border-b border-gray-900/10 items-center">
         <div class="flex-auto">
-            <h2 class="text-left block text-xl font-semibold leading-7 text-gray-900">{{ componentTitle }} :</h2>
+            <h2 class="text-left block text-xl font-semibold leading-7 text-gray-900 dark:text-white">{{ componentTitle }} :</h2>
         </div>
         <div class="flex-auto text-end">
             <button
             type="button"
             @click="toggleAddContactModal('addContactModal')"
-            class="border border-black bg-transparent hover:bg-black hover:text-white text-black font-bold py-2 px-4 rounded float-right flex"
+            class="border border-black bg-transparent hover:bg-black hover:text-white  text-black dark:text-white font-bold py-2 px-2 rounded float-right flex"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pr-1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -29,27 +29,27 @@
                             <TableHeaderVue
                                 :tableHeadingData="tableHeadingData"
                             />
-                            <tbody class="border-b">
-                                <tr v-if="Contactlist.length > 0" v-for="(value, index) in Contactlist" v-bind:key="value.id" class="bg-gray-100 border-b">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
+                            <tbody class="border-b dark:bg-gray-800 bg-gray-100 border-b">
+                                <tr v-if="Contactlist.length > 0" v-for="(value, index) in Contactlist" v-bind:key="value.id">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white text-center">
                                         {{ index + 1 }}
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                    <td class="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap text-center">
                                         {{ value.contact_title + ". " + value.contact_name }}
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                    <td class="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap text-center">
                                         {{ value.contact_email }}
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                    <td class="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap text-center">
                                         {{ value.gender }}
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                    <td class="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap text-center">
                                         {{ value.contact_person_mobile + " ("+ value.mobile_country + ")"}}
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                    <td class="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap text-center">
                                         {{ value.whatsapp_number + " ("+ value.whatsapp_number_country + ")"}}
                                     </td>
-                                    <td class="flex text-sm text-end text-gray-900 font-light px-6 py-4 whitespace-nowrap space-x-2">
+                                    <td class="flex text-sm text-end text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap space-x-2">
                                         <button
                                             type="button"
                                             @click="EditContactList(index)">
@@ -70,7 +70,7 @@
                                     </td>
                                 </tr>
                                 <tr v-else>
-                                    <td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900 text-center">
+                                    <td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900 dark:text-white text-center">
                                         <p>No record found!</p>
                                     </td>
                                 </tr>
@@ -85,9 +85,9 @@
     <!-- Add Model Main modal -->
     <div v-if="addContactModal" id="defaultModal"
         class="flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center">
-        <div class="relative w-full h-full max-w-2xl md:h-modal">
+        <div class="relative sm:w-11/12 md:full h-full max-w-2xl md:h-modal">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="relative bg-white rounded-lg shadow dark:bg-black">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
@@ -96,7 +96,7 @@
                     <button
                         type="button"
                         @click="toggleAddContactModal('addContactModal')"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 dark:text-white rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -117,13 +117,13 @@
                                 <!-- Title -->
                                 <div class="mt-1 pb-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-4">
-                                        <label for="contact_title" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Title :
+                                        <label for="contact_title" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Title <RequiredAstrik/>:
                                         </label>
                                         <div class="mt-2">
                                             <Field as="select" id="contact_title" name="contact_title"
                                                 autocomplete="on"
-                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-600 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateSelectRequiredField">
                                                 <option value=""></option>
                                                 <option v-if="TitleList" v-for="(item, index) in TitleList" :value="item.child_enum_slug"
@@ -137,15 +137,15 @@
                                 <!-- Name -->
                                 <div class="mt-1 pb-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-4">
-                                        <label for="contact_name" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Name :
+                                        <label for="contact_name" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Name <RequiredAstrik/>:
                                         </label>
                                         <div class="mt-2">
                                             <Field
                                                 type="text"
                                                 name="contact_name"
                                                 id="contact_name"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateRequiredField"
                                             />
                                             <p class="text-left text-red-500"><ErrorMessage name="contact_name" /></p>
@@ -156,13 +156,13 @@
                                 <!-- Gender  -->
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
-                                        <label for="gender" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                           Gender :
+                                        <label for="gender" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                           Gender <RequiredAstrik/>:
                                         </label>
                                         <div class="mt-2">
                                             <Field as="select" id="gender" name="gender"
                                                 autocomplete="on"
-                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-600 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateSelectRequiredField">
                                                 <option value=""></option>
                                                 <option v-if="TitleList" v-for="(item, index) in GenderList" :value="item.child_enum_slug"
@@ -176,15 +176,15 @@
                                 <!-- Contact Email -->
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
-                                        <label for="contact_email" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Email :
+                                        <label for="contact_email" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Email <RequiredAstrik/>:
                                         </label>
                                         <div class="mt-2">
                                             <Field
                                                 type="text"
                                                 name="contact_email"
                                                 id="contact_email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateEmail"
                                             />
                                             <p class="text-left text-red-500"><ErrorMessage name="contact_email" /></p>
@@ -195,15 +195,15 @@
                                 <!-- Designation -->
                                 <div class="mt-1 pb-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-4">
-                                        <label for="designation" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Designation :
+                                        <label for="designation" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Designation <RequiredAstrik/>:
                                         </label>
                                         <div class="mt-2">
                                             <Field
                                                 type="text"
                                                 name="designation"
                                                 id="designation"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateRequiredField"
                                             />
                                             <p class="text-left text-red-500"><ErrorMessage name="designation" /></p>
@@ -214,13 +214,13 @@
                                 <!-- Is Default -->
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
-                                        <label for="is_default" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                           Is Default :
+                                        <label for="is_default" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                           Is Default <RequiredAstrik/>:
                                         </label>
                                         <div class="mt-2">
                                             <Field as="select" id="is_default" name="is_default"
                                                 autocomplete="on"
-                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-600 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateSelectRequiredField">
                                                 <option value=""></option>
                                                 <option v-if="TitleList" v-for="(item, index) in IsDefaultList" :value="item.child_enum_slug"
@@ -232,9 +232,9 @@
                                 </div>
 
                                 <!-- Mobile : -->
-                                <div class="sm:col-span-2">
-                                    <label for="mobile" class="text-left text-lg block font-medium leading-6 text-gray-900">
-                                    Mobile :
+                                <div class="mt-2 sm:col-span-2">
+                                    <label for="mobile" class="text-left text-lg block font-medium leading-6 text-gray-900 dark:text-white">
+                                    Mobile <RequiredAstrik/>:
                                     </label>
                                     <div class="flex">
                                     <div class="w-24 mt-2">
@@ -243,7 +243,7 @@
                                         id="mobile_country"
                                         name="mobile_country"
                                         autocomplete="on"
-                                            class="block w-24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            class=" dark:bg-gray-600 block w-24 rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             :rules="validateSelectRequiredField">
                                             <option value="">Country</option>
                                             <option
@@ -262,7 +262,7 @@
                                         <Field  type="text" name="contact_person_mobile"
                                         id="contact_person_mobile"
                                         autocomplete="on"
-                                        class="block w-52 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        class="block w-52 rounded-md border-0 py-1.5 text-gray-900 dark:text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         :rules="validateMobileNumber" />
                                         <p class="text-left text-red-500 w-52">
                                             <ErrorMessage name="contact_person_mobile" />
@@ -271,15 +271,15 @@
                                     </div>
                                 </div>
 
-                                <!-- FaxNumber : -->
-                                <div class="sm:col-span-2">
-                                    <label for="whatsapp_number" class="text-left text-lg block font-medium leading-6 text-gray-900">
-                                      Whatsapp Number
+                                <!-- Whatsapp : -->
+                                <div class="mt-2 sm:col-span-2">
+                                    <label for="whatsapp_number" class="text-left text-lg block font-medium leading-6 text-gray-900 dark:text-white">
+                                      Whatsapp Number <RequiredAstrik/> :
                                     </label>
                                     <div class="flex">
                                     <div class="w-24 mt-2">
                                         <Field as="select" id="whatsapp_number_country" name="whatsapp_number_country" autocomplete="on"
-                                            class="block w-24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            class="block w-24 dark:bg-gray-600 rounded-md border-0 py-1.5 text-gray-900 dark:text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             :rules="validateSelectRequiredField">
                                             <option value="">Country</option>
                                             <option v-for="(type, index) in countryList" :value="type.mc_country_code" :key="index">
@@ -293,7 +293,7 @@
                                     <div class="w-5 mt-2 pl-2">
                                         <Field type="text" name="whatsapp_number"
                                         id="whatsapp_number" autocomplete="on"
-                                        class="block w-52 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        class="block w-52 rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         :rules="validateMobileNumber"
                                         />
                                         <p class="text-left text-red-500 w-52">
@@ -317,7 +317,7 @@
                             <button
                                 type="button"
                                 @click="toggleAddContactModal('addContactModal')"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:text-white focus:z-10 dark:bg-white dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                             >
                                 Decline
                             </button>
@@ -334,15 +334,15 @@
         class="flex fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:h-full justify-center items-center">
         <div class="relative w-full h-full max-w-2xl md:h-modal">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="relative bg-white rounded-lg shadow dark:bg-white">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white dark:text-white">
                         Edit Contact Person
                     </h3>
                     <button
                         type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 dark:text-white rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         @click="toggleAddContactModal('editContactModel')"
                     >
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -364,8 +364,8 @@
                                 <!-- Title -->
                                 <div class="mt-1 pb-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-4">
-                                        <label for="contact_title" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Title :
+                                        <label for="contact_title" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Title <RequiredAstrik />:
                                         </label>
                                         <div class="mt-2">
                                             <Field
@@ -373,7 +373,7 @@
                                                 id="edit_contact_title"
                                                 name="contact_title"
                                                 autocomplete="on"
-                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-600 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateSelectRequiredField"
                                                 v-model="EditContactListData.contact_title"
                                                 >
@@ -395,8 +395,8 @@
                                 <!-- Name -->
                                 <div class="mt-1 pb-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-4">
-                                        <label for="contact_name" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Name :
+                                        <label for="contact_name" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Name <RequiredAstrik />:
                                         </label>
                                         <div class="mt-2">
                                             <Field
@@ -404,7 +404,7 @@
                                                 type="text"
                                                 name="contact_name"
                                                 id="edit_contact_name"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateRequiredField"
                                             />
                                             <p class="text-left text-red-500"><ErrorMessage name="contact_name" /></p>
@@ -415,8 +415,8 @@
                                 <!-- Gender  -->
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
-                                        <label for="gender" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                           Gender :
+                                        <label for="gender" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                           Gender <RequiredAstrik />:
                                         </label>
                                         <div class="mt-2">
                                             <Field
@@ -424,7 +424,7 @@
                                                 id="gender"
                                                 name="gender"
                                                 autocomplete="on"
-                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-600 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateSelectRequiredField"
                                                 v-model="EditContactListData.gender"
                                                 >
@@ -446,8 +446,8 @@
                                 <!-- Contact Email -->
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
-                                        <label for="contact_email" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Email :
+                                        <label for="contact_email" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Email <RequiredAstrik />:
                                         </label>
                                         <div class="mt-2">
                                             <Field
@@ -455,7 +455,7 @@
                                                 type="text"
                                                 name="contact_email"
                                                 id="edit_contact_email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateEmail"
                                             />
                                             <p class="text-left text-red-500"><ErrorMessage name="contact_email" /></p>
@@ -466,8 +466,8 @@
                                 <!-- Designation -->
                                 <div class="mt-1 pb-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-4">
-                                        <label for="designation" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                            Designation :
+                                        <label for="designation" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            Designation <RequiredAstrik />:
                                         </label>
                                         <div class="mt-2">
                                             <Field
@@ -475,7 +475,7 @@
                                                 type="text"
                                                 name="designation"
                                                 id="edit_designation"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 :rules="validateRequiredField"
                                             />
                                             <p class="text-left text-red-500"><ErrorMessage name="designation" /></p>
@@ -486,8 +486,8 @@
                                 <!-- Is Default -->
                                 <div class="mt-1 pb-4  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
                                     <div class="sm:col-span-3">
-                                        <label for="is_default" class="text-left block text-lg font-medium leading-6 text-gray-900">
-                                           Is Default :
+                                        <label for="is_default" class="text-left block text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                           Is Default <RequiredAstrik />:
                                         </label>
                                         <div class="mt-2">
                                             <Field 
@@ -495,7 +495,7 @@
                                                     id="edit_is_default"
                                                     name="is_default"
                                                     autocomplete="on"
-                                                    class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    class="block w-1/4 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-600 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                     :rules="validateSelectRequiredField"
                                                     v-model="EditContactListData.is_default"
                                                 >
@@ -515,9 +515,9 @@
                                 </div>
 
                                 <!-- Mobile : -->
-                                <div class="sm:col-span-2">
-                                    <label for="mobile" class="text-left text-lg block font-medium leading-6 text-gray-900">
-                                    Mobile :
+                                <div class="mt-2 sm:col-span-2">
+                                    <label for="mobile" class="text-left text-lg block font-medium leading-6 text-gray-900 dark:text-white">
+                                    Mobile <RequiredAstrik />:
                                     </label>
                                     <div class="flex">
                                     <div class="w-24 mt-2">
@@ -526,7 +526,7 @@
                                         id="edit_mobile_country"
                                         name="mobile_country"
                                         autocomplete="on"
-                                        class="block w-24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        class="block w-24 rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         :rules="validateSelectRequiredField"
                                         v-model="EditContactListData.mobile_country"
                                         >
@@ -550,7 +550,7 @@
                                             name="contact_person_mobile"
                                             id="edit_contact_person_mobile"
                                             autocomplete="on"
-                                            class="block w-52 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            class="block w-52 rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             :rules="validateMobileNumber"
                                         />
                                         <p class="text-left text-red-500 w-52">
@@ -561,14 +561,14 @@
                                 </div>
 
                                 <!-- Whatsapp Number : -->
-                                <div class="sm:col-span-2">
-                                    <label for="whatsapp_number" class="text-left text-lg block font-medium leading-6 text-gray-900">
-                                      Whatsapp Number
+                                <div class="mt-2 sm:col-span-2">
+                                    <label for="whatsapp_number" class="text-left text-lg block font-medium leading-6 text-gray-900 dark:text-white">
+                                      Whatsapp Number <RequiredAstrik />:
                                     </label>
                                     <div class="flex">
                                     <div class="w-24 mt-2">
                                         <Field as="select" id="edit_whatsapp_number_country" name="whatsapp_number_country" autocomplete="on"
-                                            class="block w-24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            class="block w-24 rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             :rules="validateSelectRequiredField"
                                             v-model="EditContactListData.whatsapp_number_country"
                                             >
@@ -587,7 +587,7 @@
                                             name="whatsapp_number"
                                             id="edit_whatsapp_number"
                                             autocomplete="on"
-                                            class="block w-52 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            class="block w-52 rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             :rules="validateMobileNumber"
                                             v-model="EditContactListData.whatsapp_number"
                                         />
@@ -618,7 +618,7 @@
                                 @click="toggleAddContactModal('editContactModel')"
                                 type="button"
                                 id="hideEditModel"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:text-white focus:z-10 dark:bg-white dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                             >
                                 Decline
                             </button>
@@ -637,12 +637,12 @@
 import { initFlowbite } from 'flowbite'
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
 import { required, email, min, digits}  from '@vee-validate/rules';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
 import { useMasterRecord } from '../../api/MasterRecord.js'
 import TableHeaderVue from '../TableHeader.vue';
 import axios from 'axios';
 const VUE_APP_BASE_API = process.env.VUE_APP_BASE_API;
+import useToasterNotify from '@/js/comman-function.js'
+import RequiredAstrik from '../RequiredAstrik.vue';
 
 export default{
     props: ["componentTitle", "countryList", "IsDefaultList"],
@@ -652,6 +652,7 @@ export default{
         Field,
         ErrorMessage,
         TableHeaderVue,
+        RequiredAstrik,
     },
     data() {
         return {
@@ -679,8 +680,8 @@ export default{
         }
     },
     created() {
-        this.loadTitleList("GEN_2010_1006", "TitleList");
-        this.loadTitleList("GEN_1809_1006", "GenderList");
+        this.loadAPI("GEN_2010_1006", "TitleList");
+        this.loadAPI("GEN_1809_1006", "GenderList");
     },
     methods :{
         onContactSubmit(values) {
@@ -698,12 +699,14 @@ export default{
             designation : values.designation.trim(),
             })
 
+            useToasterNotify('success', "contact form details add successfully.")
+
             this.$emit("completeContact", this.Contactlist)
             this.toggleAddContactModal('addContactModal');
             document.getElementById("ContactForm").reset();
         },
-        loadTitleList(enum_code, bind_params) {
-            axios.get(`${VUE_APP_BASE_API}method=get_master_enum_data&enum_code=${enum_code}`)
+        async loadAPI(enum_code, bind_params) {
+            await axios.get(`${VUE_APP_BASE_API}method=get_master_enum_data&enum_code=${enum_code}`)
                 .then((res) => {
                 if(res.data.settings.success == "1") {
                     this[bind_params] = res.data.data.child_data;
@@ -731,10 +734,12 @@ export default{
 
                 this.toggleAddContactModal('editContactModel');
                 this.$emit("completeContact", this.Contactlist)
-                alert("Select contact detail updated successfully")
+                // alert("Select contact detail updated successfully")
+                useToasterNotify('success', "Select contact detail updated successfully")
             }
             else {
-                alert("You have updated form in not found in list");
+                useToasterNotify('error', "You have updated form in not found in list")
+                // alert("You have updated form in not found in list");
             }
         },
         validateSelectRequiredField(value) {
@@ -788,7 +793,8 @@ export default{
                 };
             }
             else {
-                alert("please select a valid contact detail");
+                useToasterNotify('error', "Please select a valid contact detail")
+                // alert("please select a valid contact detail");
             }
         },
         DeleteContactList(index) {
@@ -796,24 +802,13 @@ export default{
                 if(this.Contactlist && this.Contactlist.length > 0) {
                     this.Contactlist.splice(index, 1);
                     this.$emit("completeContact", this.Contactlist)
-                    alert("Select contact detail deleted successfully.");
+                    // alert("Select contact detail deleted successfully.");
+                    useToasterNotify('success', "Select contact detail deleted successfully.")
                 } else {
-                    alert("Select contact detail not found in list.");
+                    // alert("Select contact detail not found in list.");
+                    useToasterNotify('error', "Select contact detail not found in list.")
                 }
             }
-        },
-        searchJSON(obj, key) {
-            this.editObject = [];
-            for (let k in obj) {
-                if (obj.hasOwnProperty(k)) {
-                if (k === key && obj[k] === val) {
-                    this.editObject.push(obj);
-                } else if (typeof obj[k] === "object") {
-                    this.editObject = this.editObject.concat(searchJSON(obj[k], key, val));
-                }
-                }
-            }
-            return this.editObject;
         },
         toggleAddContactModal(toggleModel){
             console.log('toggle modal');

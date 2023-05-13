@@ -289,7 +289,8 @@ defineRule('email', email);
 defineRule('digits', digits);
 
 export default{
-    props: ["componentTitle", "completeContact"],
+    props: ["componentTitle"],
+    emits : ['completeContact'],
     components : {
         Form,
         Field,
